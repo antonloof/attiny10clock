@@ -10,8 +10,8 @@
 
 uint16_t ms = 0;
 uint8_t s = 0;
-uint8_t ml, mh = 0;
-uint8_t hl, hh = 0;
+uint8_t ml = 0, mh = 0;
+uint8_t hl = 0, hh = 0;
 uint8_t change = 0;
 
 void inc_h();
