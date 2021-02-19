@@ -9,10 +9,10 @@
 
 
 uint16_t ms = 0;
-uint8_t s = 0;
-uint8_t ml = 0, mh = 0;
-uint8_t hl = 0, hh = 0;
-uint8_t change = 0;
+uint8_t s = 1;
+uint8_t ml = 5, mh = 2;
+uint8_t hl = 1, hh = 1;
+uint8_t change = 1;
 
 void inc_h();
 void inc_m();
