@@ -512,7 +512,7 @@ U 1 1 602B4ACA
 P 1200 4250
 F 0 "X1" H 1644 4296 50  0000 L CNN
 F 1 "DFA-S15" H 1644 4205 50  0000 L CNN
-F 2 "Oscillator:Oscillator_SMD_Fordahl_DFAS15-4Pin_5.0x3.2mm" H 2300 3900 50  0001 C CNN
+F 2 "random_stuff:ASFLK" H 2300 3900 50  0001 C CNN
 F 3 "http://www.metatech.com.hk/product/fordahl/pdf/2002%20TCXO%20Page%2043-58.pdf" H 1100 4250 50  0001 C CNN
 	1    1200 4250
 	1    0    0    -1  
