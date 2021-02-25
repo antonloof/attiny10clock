@@ -10,8 +10,8 @@
 
 uint16_t ms = 0;
 uint8_t s = 1;
-uint8_t ml = 0, mh = 0;
-uint8_t hl = 0, hh = 0;
+uint8_t ml = 7, mh = 3;
+uint8_t hl = 3, hh = 1;
 uint8_t change = 1;
 
 void inc_h();
@@ -44,7 +44,7 @@ int main(void)
 	ADCSRA = 0b11101111;
 	
 	// global interrupt enable 
-	sei();
+	//sei();
 	
     while(1)
     {
@@ -69,6 +69,15 @@ int main(void)
 			clock_data(mh & C);
 			clock_data(mh & A);
 			clock_data(0);
+			
+			clock_data(0);
+			change = 0;
+		}
+		for (volatile int i = 0; i < 10000; i++) {
+			if (i == 254) {
+				change = 1;
+				inc_m();
+			}	
 		}
     }
 }
