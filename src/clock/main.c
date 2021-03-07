@@ -1,24 +1,29 @@
 #include <xc.h>
 #include <avr/interrupt.h>
 
-#define clock_data(data) PORTB = (data) ? 1 : 0; PORTB |= 0b10
-#define A 0b1
-#define B 0b10
-#define C 0b100
-#define D 0b1000
-
-
 uint16_t ms = 0;
-uint8_t s = 1;
-uint8_t ml = 7, mh = 3;
-uint8_t hl = 3, hh = 1;
+uint8_t s = 0;
+uint8_t m = 0;
+uint8_t h = 0;
 uint8_t change = 1;
 
-void inc_h();
-void inc_m();
-void dec_h();
-void dec_m();
-
+void clock_data(uint8_t);
+void send_digit(uint8_t);
+void send_2_dig(uint8_t);
+// order assumes a,b,c,d,e,f,g
+// change when layout is done :D
+const uint8_t digit_to_seg[] = {
+	0b1111110,
+	0b0110000,
+	0b1101101,
+	0b1111001,
+	0b0110011,
+	0b1011011,
+	0b1011111,
+	0b1110000,
+	0b1111111,
+	0b1111011,
+};
 
 int main(void)
 {
@@ -49,35 +54,11 @@ int main(void)
     while(1)
     {
         if (change) {
-			clock_data(s & 1);
-			
-			clock_data(hl & B);
-			clock_data(hl & C);
-			clock_data(hl & D);
-			clock_data(hl & A);
-			
-			clock_data(hh & B);
-			clock_data(hh & A);
-			clock_data(0);
-			
-			clock_data(ml & B);
-			clock_data(ml & C);
-			clock_data(ml & D);
-			clock_data(ml & A);
-			
-			clock_data(mh & B);
-			clock_data(mh & C);
-			clock_data(mh & A);
-			clock_data(0);
-			
-			clock_data(0);
 			change = 0;
-		}
-		for (volatile int i = 0; i < 10000; i++) {
-			if (i == 254) {
-				change = 1;
-				inc_m();
-			}	
+			send_2_dig(h);
+			clock_data(s & 1);
+			send_2_dig(m);
+			clock_data(0);
 		}
     }
 }
@@ -90,75 +71,50 @@ ISR(INT0_vect) {
 		change = 1;
 		if (s == 60) {
 			s = 0;
-			inc_m();
+			m++;
+			if (m == 60) {
+				h++;
+				m = 0;
+				if (h == 24) {
+					h = 0;
+				}
+			}
 		}
 	}
 }
 
 ISR(ADC_vect) {
 	if (ADCL > 20) {
+		change = 1;
 		if (ADCL > 55) {
 			if (ADCL > 120) {
 				if (ADCL > 190) {
-					dec_h();
+					h--;
 				} else {
-					dec_m();
+					m--;
 				}
 			} else {
-				inc_m();
+				m++;
 			}
 		} else {
-			inc_h();
+			h++;
 		}
 	}
 }
 
+void clock_data(uint8_t data) {
+	PORTB = data ? 1 : 0;
+	PORTB |= 0b10;
+}
 
-void inc_h() {
-	hl++;
-	if (hl == 10) {
-		hl = 0;
-		hh++;
-	}
-	if (hl == 4 && hh == 2) {
-		hh = 0;
-		hl = 0;
+void send_digit(uint8_t dig) {
+	for (uint8_t i = 0; i < 7; i++) {
+		clock_data(digit_to_seg[dig] & (1 << i));
 	}
 }
 
-void inc_m() {
-	ml++;
-	if (ml == 10) {
-		ml = 0;
-		mh++;
-		if (mh == 6) {
-			mh = 0;
-			inc_h();
-		}
-	}
-}
-
-void dec_h() {
-	if (hl == 0) {
-		if (hh == 0) {
-			hh = 2;
-			hl = 4;
-		} else {
-			hl = 10;
-			hh--;
-		}
-	}
-	hl--;
-}
-
-void dec_m() {
-	if (ml == 0) {
-		ml = 10;
-		if (mh == 0) {
-			dec_h();
-			mh = 6;
-		}
-		mh--;
-	}
-	ml--;
+void send_2_dig(uint8_t data) {
+	send_digit(data / 10);
+	clock_data(0);
+	send_digit(data % 10);
 }
