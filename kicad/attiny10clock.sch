@@ -171,17 +171,6 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8127-AVR-8-bit-Microc
 	1    4100 2450
 	1    0    0    -1  
 $EndComp
-$Comp
-L Connector:USB_B J1
-U 1 1 6029C5DE
-P 1200 2750
-F 0 "J1" H 1257 3217 50  0000 C CNN
-F 1 "USB_B" H 1257 3126 50  0000 C CNN
-F 2 "Connector_USB:USB_B_OST_USB-B1HSxx_Horizontal" H 1350 2700 50  0001 C CNN
-F 3 " ~" H 1350 2700 50  0001 C CNN
-	1    1200 2750
-	1    0    0    -1  
-$EndComp
 NoConn ~ 1500 2850
 NoConn ~ 1500 2750
 Wire Wire Line
@@ -197,7 +186,6 @@ F 3 "~" H 2200 2550 50  0001 C CNN
 	1    2200 2550
 	1    0    0    -1  
 $EndComp
-Connection ~ 1200 3150
 Wire Wire Line
 	2500 2550 2500 2450
 $Comp
@@ -211,21 +199,6 @@ F 3 "" H 2500 2450 50  0001 C CNN
 	1    2500 2450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1200 3150 1100 3150
-$Comp
-L power:GND #PWR0109
-U 1 1 602A0375
-P 1200 3200
-F 0 "#PWR0109" H 1200 2950 50  0001 C CNN
-F 1 "GND" H 1205 3027 50  0000 C CNN
-F 2 "" H 1200 3200 50  0001 C CNN
-F 3 "" H 1200 3200 50  0001 C CNN
-	1    1200 3200
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1200 3200 1200 3150
 Wire Wire Line
 	8400 5450 8400 5550
 Wire Wire Line
@@ -1012,4 +985,72 @@ Wire Wire Line
 	5050 5750 5050 5450
 Text Notes 1200 6300 0    50   ~ 0
 buttons at \n1.5V, 2.5V, 3.5V 4.5V\n\nshould add thresholds at \n1V 2V 3V 4V\n\nneeds software debounce
+$Comp
+L Connector:USB_B_Micro J1
+U 1 1 604EBE7D
+P 1200 2750
+F 0 "J1" H 1257 3217 50  0000 C CNN
+F 1 "USB_B_Micro" H 1257 3126 50  0000 C CNN
+F 2 "random_stuff:USB_MICRO_10118193-0001LF" H 1350 2700 50  0001 C CNN
+F 3 "~" H 1350 2700 50  0001 C CNN
+	1    1200 2750
+	1    0    0    -1  
+$EndComp
+NoConn ~ 1500 2950
+$Comp
+L power:GND #PWR0102
+U 1 1 604FD081
+P 1200 3150
+F 0 "#PWR0102" H 1200 2900 50  0001 C CNN
+F 1 "GND" H 1205 2977 50  0000 C CNN
+F 2 "" H 1200 3150 50  0001 C CNN
+F 3 "" H 1200 3150 50  0001 C CNN
+	1    1200 3150
+	1    0    0    -1  
+$EndComp
+NoConn ~ 1100 3150
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 6052C894
+P 1350 1000
+F 0 "H1" H 1450 1046 50  0000 L CNN
+F 1 "MountingHole" H 1450 955 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 1350 1000 50  0001 C CNN
+F 3 "~" H 1350 1000 50  0001 C CNN
+	1    1350 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 6052D0D2
+P 1350 1200
+F 0 "H2" H 1450 1246 50  0000 L CNN
+F 1 "MountingHole" H 1450 1155 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 1350 1200 50  0001 C CNN
+F 3 "~" H 1350 1200 50  0001 C CNN
+	1    1350 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 6052D545
+P 1350 1400
+F 0 "H3" H 1450 1446 50  0000 L CNN
+F 1 "MountingHole" H 1450 1355 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 1350 1400 50  0001 C CNN
+F 3 "~" H 1350 1400 50  0001 C CNN
+	1    1350 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 6052D6A0
+P 1350 1600
+F 0 "H4" H 1450 1646 50  0000 L CNN
+F 1 "MountingHole" H 1450 1555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 1350 1600 50  0001 C CNN
+F 3 "~" H 1350 1600 50  0001 C CNN
+	1    1350 1600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
