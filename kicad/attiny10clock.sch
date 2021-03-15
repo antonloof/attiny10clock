@@ -794,8 +794,6 @@ F 3 "" H 5050 5950 50  0001 C CNN
 	1    5050 5950
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4650 5450 5050 5450
 Connection ~ 4650 5450
 Text GLabel 4700 2350 2    50   Input ~ 0
 clk
@@ -1010,47 +1008,70 @@ F 3 "" H 1200 3150 50  0001 C CNN
 $EndComp
 NoConn ~ 1100 3150
 $Comp
-L Mechanical:MountingHole H1
-U 1 1 6052C894
-P 1350 1000
-F 0 "H1" H 1450 1046 50  0000 L CNN
-F 1 "MountingHole" H 1450 955 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2" H 1350 1000 50  0001 C CNN
-F 3 "~" H 1350 1000 50  0001 C CNN
-	1    1350 1000
-	1    0    0    -1  
+L Connector:TestPoint TP1
+U 1 1 6051D169
+P 10100 1350
+F 0 "TP1" H 10158 1468 50  0000 L CNN
+F 1 "TestPoint" H 10158 1377 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 10300 1350 50  0001 C CNN
+F 3 "~" H 10300 1350 50  0001 C CNN
+	1    10100 1350
+	-1   0    0    1   
+$EndComp
+Text GLabel 10100 1350 1    50   Input ~ 0
+2v
+Wire Wire Line
+	4650 5450 5050 5450
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 60530F90
+P 10050 1900
+F 0 "H1" V 10004 2050 50  0000 L CNN
+F 1 "MountingHole_Pad" V 10095 2050 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_Pad" H 10050 1900 50  0001 C CNN
+F 3 "~" H 10050 1900 50  0001 C CNN
+	1    10050 1900
+	0    1    1    0   
 $EndComp
 $Comp
-L Mechanical:MountingHole H2
-U 1 1 6052D0D2
-P 1350 1200
-F 0 "H2" H 1450 1246 50  0000 L CNN
-F 1 "MountingHole" H 1450 1155 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2" H 1350 1200 50  0001 C CNN
-F 3 "~" H 1350 1200 50  0001 C CNN
-	1    1350 1200
-	1    0    0    -1  
+L Mechanical:MountingHole_Pad H2
+U 1 1 60531C39
+P 10050 2100
+F 0 "H2" V 10004 2250 50  0000 L CNN
+F 1 "MountingHole_Pad" V 10095 2250 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_Pad" H 10050 2100 50  0001 C CNN
+F 3 "~" H 10050 2100 50  0001 C CNN
+	1    10050 2100
+	0    1    1    0   
 $EndComp
 $Comp
-L Mechanical:MountingHole H3
-U 1 1 6052D545
-P 1350 1400
-F 0 "H3" H 1450 1446 50  0000 L CNN
-F 1 "MountingHole" H 1450 1355 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2" H 1350 1400 50  0001 C CNN
-F 3 "~" H 1350 1400 50  0001 C CNN
-	1    1350 1400
-	1    0    0    -1  
+L Mechanical:MountingHole_Pad H4
+U 1 1 60531F46
+P 10050 2500
+F 0 "H4" V 10004 2650 50  0000 L CNN
+F 1 "MountingHole_Pad" V 10095 2650 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_Pad" H 10050 2500 50  0001 C CNN
+F 3 "~" H 10050 2500 50  0001 C CNN
+	1    10050 2500
+	0    1    1    0   
 $EndComp
+Wire Wire Line
+	9950 1900 9950 2100
+Connection ~ 9950 2100
 $Comp
-L Mechanical:MountingHole H4
-U 1 1 6052D6A0
-P 1350 1600
-F 0 "H4" H 1450 1646 50  0000 L CNN
-F 1 "MountingHole" H 1450 1555 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2" H 1350 1600 50  0001 C CNN
-F 3 "~" H 1350 1600 50  0001 C CNN
-	1    1350 1600
+L power:GND #PWR0103
+U 1 1 605410CB
+P 9950 2600
+F 0 "#PWR0103" H 9950 2350 50  0001 C CNN
+F 1 "GND" H 9955 2427 50  0000 C CNN
+F 2 "" H 9950 2600 50  0001 C CNN
+F 3 "" H 9950 2600 50  0001 C CNN
+	1    9950 2600
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	9950 2600 9950 2500
+Connection ~ 9950 2500
+Wire Wire Line
+	9950 2100 9950 2500
 $EndSCHEMATC
