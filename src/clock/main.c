@@ -49,7 +49,7 @@ int main(void)
 	ADCSRA = 0b11101111;
 	
 	// global interrupt enable 
-	//sei();
+	sei();
 	
     while(1)
     {
