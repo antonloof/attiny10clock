@@ -34,6 +34,10 @@ int main(void)
 	DDRB = 0b0011;
 	PORTB = 0;
 	
+	// gotta go FAST (8MHz)
+	CCP = 0xD8;
+	CLKPSR = 0;
+	
 	// enable external pin change interrupt
 	PCICR = 1;
 	// enable INT0 interrupt
@@ -50,7 +54,6 @@ int main(void)
 	
 	// global interrupt enable 
 	sei();
-	
     while(1)
     {
         if (change) {
@@ -82,7 +85,7 @@ ISR(INT0_vect) {
 		}
 	}
 }
-
+/*
 ISR(ADC_vect) {
 	if (ADCL > 20) {
 		change = 1;
@@ -101,7 +104,7 @@ ISR(ADC_vect) {
 		}
 	}
 }
-
+*/
 void clock_data(uint8_t data) {
 	PORTB = data ? 1 : 0;
 	PORTB |= 0b10;
