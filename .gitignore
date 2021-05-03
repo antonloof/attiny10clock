@@ -48,3 +48,5 @@ fp-info-cache
 
 #User Specific Files
 *.atsuo
+
+kicad/gerber/*

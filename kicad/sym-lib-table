@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name attiny10clock-rescue)(type Legacy)(uri ${KIPRJMOD}/attiny10clock-rescue.lib)(options "")(descr ""))
+)
