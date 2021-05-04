@@ -1,17 +1,29 @@
 #include <xc.h>
 #include <avr/interrupt.h>
 
+#define BTN_NONE 0
+#define BTN_HP 1
+#define BTN_HM 2
+#define BTN_MP 3
+#define BTN_MM 4
+
+// increase if getting bouncing
+#define BTN_COUNT_TARGET 200
+
 uint16_t ms = 0;
 uint8_t s = 0;
 uint8_t m = 0;
 uint8_t h = 0;
 uint8_t change = 1;
+uint8_t btn_count = 0;
+uint8_t btn_last_captured = 0;
 
 void clock_data(uint8_t);
 void send_digit(uint8_t);
 void send_2_dig(uint8_t);
-// order assumes a,b,c,d,e,f,g
-// change when layout is done :D
+uint8_t which_button(unsigned char code);
+void btn_action(uint8_t btn);
+
 const uint8_t digit_to_seg[] = {
 	0b1111110,
 	0b0110000,
@@ -85,26 +97,52 @@ ISR(INT0_vect) {
 		}
 	}
 }
-/*
+
 ISR(ADC_vect) {
-	if (ADCL > 20) {
-		change = 1;
-		if (ADCL > 55) {
-			if (ADCL > 120) {
-				if (ADCL > 190) {
-					h--;
-				} else {
-					m--;
-				}
-			} else {
-				m++;
-			}
-		} else {
-			h++;
+	uint8_t btn = which_button(ADCL);
+	if (btn_last_captured == btn && btn != BTN_NONE) {
+		btn_count++;
+		if (btn_count == BTN_COUNT_TARGET) {
+			btn_action(btn);
 		}
+	} else {
+		if (btn != BTN_NONE) {
+			btn_last_captured = btn;
+		}
+		btn_count = 0;
+	}
+	
+}
+
+void btn_action(uint8_t btn) {
+	change = 1;
+	if (btn == BTN_HM) {
+		h--;
+	} else if (btn == BTN_HP) {
+		h++;
+	} else if (btn == BTN_MP) {
+		m++;
+	} else if (btn == BTN_MM) {
+		m--;
 	}
 }
-*/
+
+uint8_t which_button(uint8_t code) {
+	if (code > 204) {
+		return BTN_HP;
+	}
+	if (code > 153) {
+		return BTN_HM;
+	}
+	if (code > 102) {
+		return BTN_MP;
+	}
+	if (code > 51) {
+		return BTN_MM;
+	}
+	return BTN_NONE;
+}
+
 void clock_data(uint8_t data) {
 	PORTB = data ? 1 : 0;
 	PORTB |= 0b10;
