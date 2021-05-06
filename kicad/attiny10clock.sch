@@ -208,7 +208,7 @@ Wire Wire Line
 Wire Wire Line
 	8400 1400 8400 1500
 $Comp
-L attiny10clock-rescue:SA56-11EWA-random_things D6
+L attiny10clock-rescue:SA56-11EWA-random_things-attiny10clock-rescue D6
 U 1 1 604BC073
 P 8150 5800
 F 0 "D6" H 8150 6375 50  0000 C CNN
@@ -227,7 +227,7 @@ Wire Wire Line
 NoConn ~ 7900 6150
 NoConn ~ 7800 6150
 $Comp
-L attiny10clock-rescue:NPIC6C595-random_things U5
+L attiny10clock-rescue:NPIC6C595-random_things-attiny10clock-rescue U5
 U 1 1 604BC068
 P 7450 5900
 F 0 "U5" H 7450 6575 50  0000 C CNN
@@ -274,7 +274,7 @@ Wire Wire Line
 Wire Wire Line
 	7800 5450 7900 5450
 $Comp
-L attiny10clock-rescue:SA56-11EWA-random_things D5
+L attiny10clock-rescue:SA56-11EWA-random_things-attiny10clock-rescue D5
 U 1 1 604B56B5
 P 8150 4450
 F 0 "D5" H 8150 5025 50  0000 C CNN
@@ -293,7 +293,7 @@ Wire Wire Line
 NoConn ~ 7900 4800
 NoConn ~ 7800 4800
 $Comp
-L attiny10clock-rescue:NPIC6C595-random_things U4
+L attiny10clock-rescue:NPIC6C595-random_things-attiny10clock-rescue U4
 U 1 1 604B56AA
 P 7450 4550
 F 0 "U4" H 7450 5225 50  0000 C CNN
@@ -340,7 +340,7 @@ Wire Wire Line
 Wire Wire Line
 	7800 4100 7900 4100
 $Comp
-L attiny10clock-rescue:SA56-11EWA-random_things D4
+L attiny10clock-rescue:SA56-11EWA-random_things-attiny10clock-rescue D4
 U 1 1 604B2662
 P 8150 3100
 F 0 "D4" H 8150 3675 50  0000 C CNN
@@ -358,7 +358,7 @@ Wire Wire Line
 	7800 3350 7900 3350
 NoConn ~ 7900 3450
 $Comp
-L attiny10clock-rescue:NPIC6C595-random_things U3
+L attiny10clock-rescue:NPIC6C595-random_things-attiny10clock-rescue U3
 U 1 1 604B2657
 P 7450 3200
 F 0 "U3" H 7450 3875 50  0000 C CNN
@@ -405,7 +405,7 @@ Wire Wire Line
 Wire Wire Line
 	7800 2750 7900 2750
 $Comp
-L attiny10clock-rescue:SA56-11EWA-random_things D3
+L attiny10clock-rescue:SA56-11EWA-random_things-attiny10clock-rescue D3
 U 1 1 6036F5A5
 P 8150 1750
 F 0 "D3" H 8150 2325 50  0000 C CNN
@@ -424,7 +424,7 @@ Wire Wire Line
 NoConn ~ 7900 2100
 NoConn ~ 7800 2100
 $Comp
-L attiny10clock-rescue:NPIC6C595-random_things U2
+L attiny10clock-rescue:NPIC6C595-random_things-attiny10clock-rescue U2
 U 1 1 60492F39
 P 7450 1850
 F 0 "U2" H 7450 2525 50  0000 C CNN
@@ -667,7 +667,7 @@ F 3 "~" H 5450 2250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L attiny10clock-rescue:RT8097AHGB-random_things U6
+L attiny10clock-rescue:RT8097AHGB-random_things-attiny10clock-rescue U6
 U 1 1 6059CE26
 P 4150 5550
 F 0 "U6" H 4150 5875 50  0000 C CNN

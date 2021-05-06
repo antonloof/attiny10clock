@@ -8,7 +8,7 @@
 #define BTN_MM 4
 
 // increase if getting bouncing
-#define BTN_COUNT_TARGET 200
+#define BTN_COUNT_TARGET 8
 
 uint16_t ms = 0;
 uint8_t s = 0;
@@ -17,6 +17,7 @@ uint8_t h = 0;
 uint8_t change = 1;
 uint8_t btn_count = 0;
 uint8_t btn_last_captured = 0;
+uint8_t got_btn = 0;
 
 void clock_data(uint8_t);
 void send_digit(uint8_t);
@@ -61,8 +62,8 @@ int main(void)
 	ADMUX = 0b11;
 	// set free running mode
 	ADCSRB = 0;
-	// enable adc, start adc, auto trigger (free running), use interrupt, set slowest adc clock (1/128*system clock)
-	ADCSRA = 0b11101111;
+	// enable adc, start adc, single shot, do not use interrupt, set fastest adc clock (1/2*system clock)
+	ADCSRA = 0b10000000;
 	
 	// global interrupt enable 
 	sei();
@@ -74,6 +75,34 @@ int main(void)
 			clock_data(s & 1);
 			send_2_dig(m);
 			clock_data(0);
+		}
+		if (ms & 0x100) {
+			// start conversion
+			ADCSRA |= 0b01000000;
+			// wait for conversion
+			while (!(ADCSRA & 0b00010000)) {} 
+			uint8_t btn = which_button(ADCL);	
+			// clear adc conversion bit
+			ADCSRA |= 0b00010000;
+			
+			if (!got_btn) {
+				if (btn_last_captured == btn && btn != BTN_NONE) {
+					btn_count++;
+					if (btn_count == BTN_COUNT_TARGET) {
+						btn_action(btn);
+						got_btn = 1;
+					}
+					} else {
+					if (btn != BTN_NONE) {
+						btn_last_captured = btn;
+					}
+					btn_count = 0;
+				}	
+			} else {
+				if (btn == BTN_NONE) {
+					got_btn = 0;
+				}
+			}
 		}
     }
 }
@@ -98,44 +127,36 @@ ISR(INT0_vect) {
 	}
 }
 
-ISR(ADC_vect) {
-	uint8_t btn = which_button(ADCL);
-	if (btn_last_captured == btn && btn != BTN_NONE) {
-		btn_count++;
-		if (btn_count == BTN_COUNT_TARGET) {
-			btn_action(btn);
-		}
-	} else {
-		if (btn != BTN_NONE) {
-			btn_last_captured = btn;
-		}
-		btn_count = 0;
-	}
-	
-}
-
 void btn_action(uint8_t btn) {
 	change = 1;
 	if (btn == BTN_HM) {
-		h--;
+		if (h != 0) {
+			h--;	
+		}
 	} else if (btn == BTN_HP) {
-		h++;
+		if (h != 23) {
+			h++;	
+		}
 	} else if (btn == BTN_MP) {
-		m++;
+		if (m != 59) {
+			m++;	
+		}
 	} else if (btn == BTN_MM) {
-		m--;
+		if (m != 0) {
+			m--;	
+		}
 	}
 }
 
 uint8_t which_button(uint8_t code) {
 	if (code > 204) {
-		return BTN_HP;
-	}
-	if (code > 153) {
 		return BTN_HM;
 	}
-	if (code > 102) {
+	if (code > 153) {
 		return BTN_MP;
+	}
+	if (code > 102) {
+		return BTN_HP;
 	}
 	if (code > 51) {
 		return BTN_MM;

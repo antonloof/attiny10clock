@@ -297,11 +297,11 @@ X ~ 2 300 0 200 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# attiny10clock-rescue_NPIC6C595-random_things
+# attiny10clock-rescue_NPIC6C595-random_things-attiny10clock-rescue
 #
-DEF attiny10clock-rescue_NPIC6C595-random_things U 0 40 Y Y 1 F N
+DEF attiny10clock-rescue_NPIC6C595-random_things-attiny10clock-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 -450 50 H V C CNN
-F1 "attiny10clock-rescue_NPIC6C595-random_things" 0 600 50 H V C CNN
+F1 "attiny10clock-rescue_NPIC6C595-random_things-attiny10clock-rescue" 0 600 50 H V C CNN
 F2 "" 0 -450 50 H I C CNN
 F3 "" 0 -450 50 H I C CNN
 DRAW
@@ -325,11 +325,11 @@ X q7s 9 350 -350 100 L 50 50 1 1 O
 ENDDRAW
 ENDDEF
 #
-# attiny10clock-rescue_RT8097AHGB-random_things
+# attiny10clock-rescue_RT8097AHGB-random_things-attiny10clock-rescue
 #
-DEF attiny10clock-rescue_RT8097AHGB-random_things U 0 40 Y Y 1 F N
+DEF attiny10clock-rescue_RT8097AHGB-random_things-attiny10clock-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 -250 50 H V C CNN
-F1 "attiny10clock-rescue_RT8097AHGB-random_things" 0 200 50 H V C CNN
+F1 "attiny10clock-rescue_RT8097AHGB-random_things-attiny10clock-rescue" 0 200 50 H V C CNN
 F2 "" -100 -100 50 H I C CNN
 F3 "" -100 -100 50 H I C CNN
 DRAW
@@ -342,11 +342,11 @@ X fb 5 300 -150 100 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# attiny10clock-rescue_SA56-11EWA-random_things
+# attiny10clock-rescue_SA56-11EWA-random_things-attiny10clock-rescue
 #
-DEF attiny10clock-rescue_SA56-11EWA-random_things D 0 40 Y Y 1 F N
+DEF attiny10clock-rescue_SA56-11EWA-random_things-attiny10clock-rescue D 0 40 Y Y 1 F N
 F0 "D" 0 450 50 H V C CNN
-F1 "attiny10clock-rescue_SA56-11EWA-random_things" 50 -450 50 H V C CNN
+F1 "attiny10clock-rescue_SA56-11EWA-random_things-attiny10clock-rescue" 50 -450 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
